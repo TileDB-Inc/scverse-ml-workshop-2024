@@ -2,14 +2,18 @@
 
 Scripts associated with the [Training models on atlas-scale single-cell datasets] workshop at [scverse Conference 2024].
 
-## TileDB-Cloud CLI
-Install `scverse` CLI:
+## `scverse`: TileDB-Cloud CLI
+
+### Install
 ```bash
 git clone https://github.com/ryan-williams/scverse-workshop
 pip install -e scverse-workshop
 ```
 
-### Upload, list, and delete notebooks
+#### Auth
+Put a TileDB-Cloud auth token in `.tiledb-cloud-token`, and it will be picked up automatically by the CLI commands below.
+
+### `scverse nb`: Upload, list, and delete notebooks
 ```bash
 scverse nb
 # Usage: scverse nb [OPTIONS] COMMAND [ARGS]...
@@ -77,22 +81,17 @@ Options:
 ```
 </details>
 
-## Notebooks
-- [pytorch.ipynb]: PyTorch model training and evaluation.
-- [cshl.ipynb]: CSHL dataset exploration.
+## Related tutorials
+See [examples/](examples/):
+- [pytorch.ipynb]: copy of [Training a PyTorch Model][pytorch.html] (CELLxGENE Census tutorial)
+- [cshl.ipynb]: copy of [CELLxGENE Discover Census Workshop - CSHL Single-Cell Analysis 2023][cshl-2023]
 
-[cloud.ipynb] contains an example adding and deleting a notebook from the `scverse-ml-workshop-2024` TileDB-Cloud namespace. To execute with [Papermill]:
-
-```bash
-papermill cloud.ipynb cloud-out.ipynb && \
-juq papermill-clean cloud-out.ipynb -o cloud.ipynb && \
-rm cloud-out.ipynb
-```
 
 [Training models on atlas-scale single-cell datasets]: https://cfp.scverse.org/2024/talk/GQHNYE/
 [schedule]: https://scverse.org/conference2024/schedule#2024-09-12
 [scverse Conference 2024]: https://scverse.org/conference2024
-[cloud.ipynb]: cloud.ipynb
-[pytorch.ipynb]: pytorch.ipynb
-[cshl.ipynb]: cshl.ipynb
+[pytorch.ipynb]: examples/pytorch.ipynb
+[pytorch.html]: https://chanzuckerberg.github.io/cellxgene-census/notebooks/experimental/pytorch.html
+[cshl.ipynb]: examples/cshl.ipynb
 [Papermill]: https://papermill.readthedocs.io/en/latest/
+[cshl-2023]: https://colab.research.google.com/drive/1QgZQRF_ZM9q5oKbynnD9ToklVFdui7pq
