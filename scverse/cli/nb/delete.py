@@ -2,11 +2,11 @@ from click import argument
 from tiledb import cloud
 from utz import err
 
-from .command import command
+from . import cmd
 from ..base import get_arrays
 
 
-@command('rm')
+@cmd('rm')
 @argument('nb-name')
 def delete(namespace, nb_name):
     """Delete a notebook from TileDB-Cloud, by namespace and name."""

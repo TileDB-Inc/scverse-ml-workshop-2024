@@ -4,11 +4,11 @@ from click import option, argument
 from tiledb import cloud
 from utz import err
 
-from .command import command
+from . import cmd
 from ..base import get_arrays
 
 
-@command('put')
+@cmd('put')
 @option('-d', '--delete', is_flag=True, help='If True, delete the notebook after uploading')
 @option('-n', '--dst-name', help='Destination notebook name')
 @argument('src')

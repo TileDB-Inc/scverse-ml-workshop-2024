@@ -1,8 +1,8 @@
-from .command import command
+from . import cmd
 from ..base import get_arrays
 
 
-@command('ls', name='list')
+@cmd('ls', name='list')
 def ls(namespace):
     """List TileDB-Cloud notebooks."""
     arrs = get_arrays(namespace)

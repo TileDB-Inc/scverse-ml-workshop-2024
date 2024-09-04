@@ -1,7 +1,7 @@
 from .base import cli as main
-from .nb.upload import upload
-from .nb.delete import delete
-from .nb.ls import ls
+from . import nb
+from . import org
+from . import invite
 
 
 if __name__ == '__main__':
