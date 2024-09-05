@@ -1,4 +1,4 @@
-# scverse workshop
+# scverse-ml-workshop-2024
 
 Scripts associated with the [Training models on atlas-scale single-cell datasets] workshop at [scverse Conference 2024].
 
