@@ -19,7 +19,6 @@ from ..aliased_group import AliasedGroup
 from ..base import cli, compact_opt, dry_run_opt
 from ..command import command
 
-
 @cli.group(cls=AliasedGroup)
 def invite():
     """Create/List invitations to a TileDB-Cloud namespace."""
