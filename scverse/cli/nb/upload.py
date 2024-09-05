@@ -1,4 +1,5 @@
 from os.path import basename, splitext
+from typing import Optional
 
 from click import option, argument
 from tiledb import cloud
@@ -13,7 +14,7 @@ from ..base import get_arrays
 @option('-n', '--dst-name', help='Destination notebook name')
 @argument('src')
 def upload(
-    dst_name: str | None,
+    dst_name: Optional[str],
     delete: bool,
     namespace: str,
     credential_name: str,

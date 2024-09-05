@@ -1,4 +1,5 @@
 from os.path import exists
+from typing import Optional
 
 from functools import wraps
 from inspect import getfullargspec
@@ -12,7 +13,7 @@ from .base import cloud_token_opt, credential_opt, namespace_opt
 def command(
     parent: AliasedGroup,
     *aliases: str,
-    name: str | None = None,
+    name: Optional[str] = None,
     no_args_is_help: bool = True,
     **kwargs
 ):
