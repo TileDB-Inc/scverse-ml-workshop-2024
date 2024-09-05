@@ -1,4 +1,5 @@
 from os import getenv
+from typing import Optional
 
 from functools import wraps
 from inspect import getfullargspec
@@ -40,7 +41,7 @@ def _get_token(
 def command(
     parent: AliasedGroup,
     *aliases: str,
-    name: str | None = None,
+    name: Optional[str] = None,
     no_args_is_help: bool = True,
     **kwargs
 ):
