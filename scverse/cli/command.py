@@ -1,4 +1,4 @@
-from os.path import exists
+from os import getenv
 from typing import Optional
 
 from functools import wraps
@@ -8,6 +8,34 @@ from utz import decos
 
 from .aliased_group import AliasedGroup
 from .base import cloud_token_opt, credential_opt, namespace_opt
+
+
+def _get_token(
+    cloud_token_path: str= ".tiledb-cloud-token",
+    env_var: str = "TILEDB_REST_TOKEN",
+) -> str:
+    """Get a TileDB Cloud API token.
+    
+    Prioritizes a dotfile.
+    Args:
+        cloud_token_path:
+            Path to dotfile having API token
+        env_var:
+            Environment variable key name.
+    
+    Returns:
+        TileDB Cloud API token.
+    """
+    
+    try: 
+        with open(cloud_token_path, 'r') as f:
+            token = f.read().strip()
+    except FileNotFoundError:
+        token = getenv(env_var)
+        if not token:
+            raise ValueError(f"No token specified in {cloud_token_path} or ${env_var}.")
+
+    return token
 
 
 def command(
@@ -28,10 +56,7 @@ def command(
         ])
         @wraps(fn)
         def _fn(cloud_token_path, **kwargs):
-            if not exists(cloud_token_path):
-                raise ValueError(f'Cloud token file not found: {cloud_token_path}')
-            with open(cloud_token_path, 'r') as f:
-                token = f.read().strip()
+            token = _get_token(cloud_token_path)
             cloud.login(token=token)
             return fn(**{ k: v for k, v in kwargs.items() if k in spec.args })
 

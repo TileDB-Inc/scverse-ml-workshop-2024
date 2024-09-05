@@ -9,7 +9,7 @@ def cli():
 
 
 NAMESPACE = 'scverse-ml-workshop-2024'
-DEFAULT_CREDENTIAL_NAME = 'rw-test'
+DEFAULT_CREDENTIAL_NAME = 'scverse-ml-workshop-2024'
 DEFAULT_CLOUD_TOKEN_PATH = '.tiledb-cloud-token'
 
 
