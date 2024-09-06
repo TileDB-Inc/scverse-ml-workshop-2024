@@ -221,8 +221,8 @@ Options:
 ```
 </details>
 
-<!-- `bmdfff scverse nb ls` -->
-<details><summary><code>scverse nb ls</code></summary>
+<!-- `bmdfff -- scverse nb ls --help` -->
+<details><summary><code>scverse nb ls --help</code></summary>
 
 ```
 Usage: scverse nb ls [OPTIONS]
