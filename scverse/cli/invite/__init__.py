@@ -1,11 +1,17 @@
+import logging
 import json
+import os
+import re
+import sys
+from attrs import define, field
+from importlib.metadata import version
 
 from click import argument, Choice, option
 from functools import partial
 from tiledb import cloud
 from tiledb.cloud import invites  # required for `cloud.invites` to resolve
-from tiledb.cloud.rest_api import InvitationApi, InvitationOrganizationJoinEmail, ApiException
-from tiledb.cloud.rest_api.models import OrganizationRoles
+from tiledb.cloud.rest_api import InvitationApi, InvitationOrganizationJoinEmail, ApiException, NotebookApi
+from tiledb.cloud.rest_api.models import OrganizationRoles, NotebookCopy
 from utz import err
 
 from tiledb.cloud.client import client
@@ -16,12 +22,12 @@ from ...util.json import DateTimeEncoder
 READ_WRITE = OrganizationRoles.READ_WRITE
 ROLES = OrganizationRoles.allowable_values
 
-
-from typing import cast, Any, Optional, Sequence
+from typing import cast, Any, Optional, Sequence, List
 
 from ..aliased_group import AliasedGroup
 from ..base import cli, compact_opt, dry_run_opt
 from ..command import command
+
 
 
 @cli.group(cls=AliasedGroup)
@@ -85,14 +91,107 @@ def invite_to_organization(
         return invitation_api.join_organization(organization, email_invite)
     except ApiException as exc:
         raise maybe_wrap(exc)
+    
+
+@define
+class MakeNB:
+
+    namespace: str = "scverse-ml-workshop-2024"
+    """Namespace to deposit notebooks."""
+    acn: str = "scverse-ml-workshop-2024"
+    """Access credential name."""
+    logger: logging.Logger = field()
+    """logger for notebook creation."""
+
+    @logger.default
+    def _get_logger(self) -> logging.Logger:
+        return self._inst_logger()
+    
+    s3_particpant_uri: str = "s3://tiledb-conferences-us-west-2/scverse-ml-workshop-2024/participants"
+    """S3 URI to store copied notebooks."""
+    template_nb: str = "template"
+    """Name of workshop template notebook."""
+
+    def _inst_logger(self, level: str = logging.INFO) -> logging.Logger:
+
+        logger = logging.getLogger(__name__)
+        logger.addHandler(logging.StreamHandler(sys.stdout))
+        # init format
+        lformat = logging.Formatter(
+            fmt="\033[96mscverse-cli\033[0m %(message)s\n",
+            datefmt="%d-%b-%y %H:%M:%S",
+        )
+        # set the format for the logger
+        logger.handlers[0].setFormatter(lformat)
+        logger.setLevel(level)
+
+        logger.debug("\033[93m%s\033[0m logger initialized." % version("scverse-workshop"))
+
+        return logger
+
+
+    def rename(self, email: str) -> str:
+        """Consumes an email and creates a notebook.
+        
+        input: spencer.seale@tiledb.com
+        output: spencerseale--tiledb-com
+        """
+
+        username, domain = email.split("@")
+        modified_username = re.sub("\.", '', username)
+        modified_domain = re.sub("\.", '-', domain)
+
+        notebook_name = modified_username + "--" + modified_domain
+
+        self.logger.info(f"\033[93m{notebook_name}\033[0m will be made for user {email}")
+
+        return notebook_name
+        
+
+    def name_nbs(self, emails: Sequence[str]) -> List[str]:
+        """Orchestrator for notebook renaming."""
+
+        nb_to_make = []
+        for user in emails:
+            nb_to_make.append(self.rename(user))
+
+        return nb_to_make
+
+
+    def make_user_nbs(self, emails: Sequence[str]):
+        """Runner to name and copy notebooks."""
+        
+        to_make = self.name_nbs(emails)
+        notebook_api = client.build(NotebookApi)
+
+        for new_nb in to_make:
+            self.logger.info(f"Creating {new_nb}")
+            nc = NotebookCopy(
+                output_uri=os.path.join(self.s3_particpant_uri, new_nb),
+                name=new_nb,
+                namespace=self.namespace,
+            )
+
+            notebook_api.handle_copy_notebook(
+                namespace=self.namespace,
+                array="template",
+                notebook_copy=nc,
+                x_tiledb_cloud_access_credentials_name=self.acn,
+            )
+            self.logger.info(f"{new_nb} added to namespace!")
+
+        self.logger.info("All notebooks created \033[93m:D\033[0m")
 
 
 @cmd('send')
 @option('-r', '--role', type=Choice(ROLES), default=READ_WRITE, help=f"Role to invite new user as (options: {ROLES}; default: {READ_WRITE})")
 @argument('emails', nargs=-1)
-def do(namespace, role, emails):
-    """Invite a user to a TileDB-Cloud namespace"""
+def do(namespace, credential_name, role, emails):
+    """Invite a user to a TileDB-Cloud namespace and create their notebook copy."""
     invite_to_organization(namespace, recipients=emails, role=role)
+
+    maker = MakeNB(namespace=namespace, acn=credential_name)
+    maker.make_user_nbs(emails=emails)
 
 
 @cmd()
