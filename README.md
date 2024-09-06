@@ -194,8 +194,8 @@ scverse nb
 #   --help  Show this message and exit.
 #
 # Commands:
-#   cp (copy)       Create copies of a "template" notebook, with names
-#                   corresponding...
+#   cp (copy)       Create one or more copies of a "template" notebook, with
+#                   names...
 #   get (download)  Download a TileDB-Cloud notebook; [DST] of "-" prints to
 #                   stdout.
 #   ls (list)       List TileDB-Cloud notebooks.
@@ -221,14 +221,14 @@ Options:
 ```
 </details>
 
-<!-- `bmdfff -- scverse nb cp --help` -->
-<details><summary><code>scverse nb cp --help</code></summary>
+<!-- `bmdfff -- scverse nb cp` -->
+<details><summary><code>scverse nb cp</code></summary>
 
 ```
 Usage: scverse nb cp [OPTIONS] [EMAILS]...
 
-  Create copies of a "template" notebook, with names corresponding to provided
-  email addresses.
+  Create one or more copies of a "template" notebook, with names corresponding
+  to provided email addresses.
 
 Options:
   -t, --cloud-token-path TEXT   Path to file containing TileDB-Cloud auth
@@ -244,8 +244,8 @@ Options:
 ```
 </details>
 
-<!-- `bmdfff -- scverse nb get --help` -->
-<details><summary><code>scverse nb get --help</code></summary>
+<!-- `bmdfff -- scverse nb get` -->
+<details><summary><code>scverse nb get</code></summary>
 
 ```
 Usage: scverse nb get [OPTIONS] NB_NAME [DST]

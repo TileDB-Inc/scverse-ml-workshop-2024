@@ -24,7 +24,7 @@ def cp(
     src_notebook_name: str,
     emails: Tuple[str],
 ):
-    """Create copies of a "template" notebook, with names corresponding to provided email addresses."""
+    """Create one or more copies of a "template" notebook, with names corresponding to provided email addresses."""
     notebook_api = client.build(NotebookApi)
 
     dsts = [

@@ -6,7 +6,7 @@ from . import cmd
 from ..base import get_arrays
 
 
-@cmd('download', no_args_is_help=False)
+@cmd('download')
 @argument('nb-name')
 @argument('dst', required=False)
 def get(namespace, nb_name, dst):
