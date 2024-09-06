@@ -304,7 +304,8 @@ Options:
 ## Example notebooks/tutorials
 See [examples/](examples/):
 - [pytorch.ipynb]: copy of [Training a PyTorch Model][pytorch.html] (CELLxGENE Census tutorial)
-- [cshl.ipynb]: copy of [CELLxGENE Discover Census Workshop - CSHL Single-Cell Analysis 2023][cshl-2023]
+- [cshl.ipynb]: copy of [CELLxGENE Discover Census Workshop - CSHL Single-Cell Analysis 2023][cshl-2023] (Python)
+- [cshl-R.ipynb]: copy of [CELLxGENE Discover Census Workshop - CSHL Single-Cell Analysis 2023][cshl-2023 R] (R)
 
 
 [Training models on atlas-scale single-cell datasets]: https://cfp.scverse.org/2024/talk/GQHNYE/
@@ -313,5 +314,7 @@ See [examples/](examples/):
 [pytorch.ipynb]: examples/pytorch.ipynb
 [pytorch.html]: https://chanzuckerberg.github.io/cellxgene-census/notebooks/experimental/pytorch.html
 [cshl.ipynb]: examples/cshl.ipynb
+[cshl-R.ipynb]: examples/cshl-R.ipynb
 [Papermill]: https://papermill.readthedocs.io/en/latest/
 [cshl-2023]: https://colab.research.google.com/drive/1QgZQRF_ZM9q5oKbynnD9ToklVFdui7pq
+[cshl-2023 R]: https://colab.research.google.com/drive/158f6Ggl5MRxtnxC9Q01TjJMbkIPQxcim
