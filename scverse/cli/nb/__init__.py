@@ -17,8 +17,4 @@ cmd = partial(command, nb)
 
 
 # Register `nb` subcommands
-from .cp import cp
-from .get import get
-from .ls import ls
-from .put import put
-from .rm import rm
+from . import cp, get, ls, md, put, rm

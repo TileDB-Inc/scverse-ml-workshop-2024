@@ -199,6 +199,7 @@ scverse nb
 #   get (download)  Download a TileDB-Cloud notebook; [DST] of "-" prints to
 #                   stdout.
 #   ls (list)       List TileDB-Cloud notebooks.
+#   md (metadata)   Show a TileDB-Cloud notebook's metadata.
 #   put (upload)    Upload a notebook to TileDB-Cloud.
 #   rm (delete)     Delete a notebook from TileDB-Cloud, by namespace and name.
 ```
@@ -258,6 +259,25 @@ Options:
                                $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
                                scverse-ml-workshop-2024
+  --help                       Show this message and exit.
+```
+</details>
+
+<!-- `bmdfff -- scverse nb md` -->
+<details><summary><code>scverse nb md</code></summary>
+
+```
+Usage: scverse nb md [OPTIONS] NB_NAME
+
+  Show a TileDB-Cloud notebook's metadata.
+
+Options:
+  -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
+                               token; default: .tiledb-cloud-token.
+                               $TILEDB_REST_TOKEN takes precedence, if set.
+  -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
+                               scverse-ml-workshop-2024
+  -C, --compact                Print compact JSON
   --help                       Show this message and exit.
 ```
 </details>
