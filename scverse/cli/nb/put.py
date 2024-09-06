@@ -5,6 +5,9 @@ from click import option, argument
 from tiledb import cloud
 from utz import err
 
+from tiledb.cloud.files import upload
+
+from tiledb.cloud.notebook import OnExists
 from . import cmd
 from ..base import get_arrays
 
@@ -25,11 +28,31 @@ def put(
     if dst_name is None:
         dst_name = splitext(basename(src))[0]
 
-    err(f"Uploading {src} to {dst_name} in namespace {namespace} with credential {credential_name}")
+    arrs = get_arrays(namespace)
+    existing_arrays = [
+        arr
+        for arr in arrs
+        if arr.name == dst_name
+    ]
+    if len(existing_arrays) > 1:
+        raise RuntimeError(f"{len(existing_arrays)} arrays with name {dst_name} found in namespace {namespace}")
+    elif len(existing_arrays) == 1:
+        dest_uri = existing_arrays[0].tiledb_uri
+        upload_kwargs = dict(
+            dest_uri=dest_uri,
+            on_exists=OnExists.OVERWRITE,
+        )
+        err(f"Array with name {dst_name} already exists in {namespace} ({dest_uri}); overwriting…")
+    else:
+        upload_kwargs = dict(
+            array_name=dst_name,
+            namespace=namespace,
+        )
+        err(f"Uploading {src} to {dst_name} in namespace {namespace} with credential {credential_name}")
+
     cloud.upload_notebook_from_file(
         src,
-        array_name=dst_name,
-        namespace=namespace,
+        **upload_kwargs,
         storage_path=storage_path,
         storage_credential_name=credential_name,
     )
