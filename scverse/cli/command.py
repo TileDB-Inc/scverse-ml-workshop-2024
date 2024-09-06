@@ -7,12 +7,12 @@ from tiledb import cloud
 from utz import decos
 
 from .aliased_group import AliasedGroup
-from .base import cloud_token_opt, credential_opt, namespace_opt
+from .base import cloud_token_opt, credential_opt, namespace_opt, DEFAULT_CLOUD_TOKEN_PATH, TILEDB_REST_TOKEN_VAR
 
 
 def _get_token(
-    cloud_token_path: str= ".tiledb-cloud-token",
-    env_var: str = "TILEDB_REST_TOKEN",
+    cloud_token_path: str = DEFAULT_CLOUD_TOKEN_PATH,
+    env_var: str = TILEDB_REST_TOKEN_VAR,
 ) -> str:
     """Get a TileDB Cloud API token.
     
@@ -45,6 +45,7 @@ def command(
     no_args_is_help: bool = True,
     **kwargs
 ):
+    """Define a subcommand of a ``parent`` group, add namespace and credential-parsing options."""
     def _command(fn):
         spec = getfullargspec(fn)
 

@@ -56,7 +56,8 @@ Usage: scverse org show [OPTIONS]
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token
+                               token; default: .tiledb-cloud-token.
+                               $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
                                scverse-ml-workshop-2024
   --help                       Show this message and exit.
@@ -73,7 +74,8 @@ Usage: scverse org users [OPTIONS]
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token
+                               token; default: .tiledb-cloud-token.
+                               $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
                                scverse-ml-workshop-2024
   -C, --compact                Print compact JSON
@@ -91,7 +93,8 @@ Usage: scverse org user [OPTIONS] [USERNAME]
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token
+                               token; default: .tiledb-cloud-token.
+                               $TILEDB_REST_TOKEN takes precedence, if set.
   -C, --compact                Print compact JSON
   --help                       Show this message and exit.
 ```
@@ -125,7 +128,8 @@ Usage: scverse invite send [OPTIONS] [EMAILS]...
 
 Options:
   -t, --cloud-token-path TEXT     Path to file containing TileDB-Cloud auth
-                                  token; default: .tiledb-cloud-token
+                                  token; default: .tiledb-cloud-token.
+                                  $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT            TileDB-Cloud namespace to work in; default:
                                   scverse-ml-workshop-2024
   -r, --role [owner|admin|read_write|read_only]
@@ -146,7 +150,8 @@ Usage: scverse invite list [OPTIONS]
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token
+                               token; default: .tiledb-cloud-token.
+                               $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
                                scverse-ml-workshop-2024
   -C, --compact                Print compact JSON
@@ -164,7 +169,8 @@ Usage: scverse invite rm [OPTIONS] [EMAILS]...
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token
+                               token; default: .tiledb-cloud-token.
+                               $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
                                scverse-ml-workshop-2024
   -n, --dry-run                Print commands that would be run, but don't run
@@ -203,8 +209,10 @@ Usage: scverse nb put [OPTIONS] SRC
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token
-  -c, --credential-name TEXT   Storage credential name; default: rw-test
+                               token; default: .tiledb-cloud-token.
+                               $TILEDB_REST_TOKEN takes precedence, if set.
+  -c, --credential-name TEXT   Storage credential name; default: scverse-ml-
+                               workshop-2024
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
                                scverse-ml-workshop-2024
   -d, --delete                 If True, delete the notebook after uploading
@@ -223,7 +231,8 @@ Usage: scverse nb ls [OPTIONS]
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token
+                               token; default: .tiledb-cloud-token.
+                               $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
                                scverse-ml-workshop-2024
   --help                       Show this message and exit.
@@ -240,7 +249,8 @@ Usage: scverse nb rm [OPTIONS] NB_NAME
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token
+                               token; default: .tiledb-cloud-token.
+                               $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
                                scverse-ml-workshop-2024
   --help                       Show this message and exit.
