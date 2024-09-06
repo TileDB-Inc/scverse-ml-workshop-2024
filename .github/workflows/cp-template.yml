@@ -1,0 +1,18 @@
+name: Sync template.ipynb to scverse-ml-workshop-2024 TileDB-Cloud namespace
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - run: pip install -e .
+    - run: scverse nb put template.ipynb
+      env:
+        TILEDB_REST_TOKEN: ${{ secrets.TILEDB_REST_TOKEN }}
