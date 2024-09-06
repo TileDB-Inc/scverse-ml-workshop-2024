@@ -221,21 +221,26 @@ Options:
 ```
 </details>
 
-<!-- `bmdfff -- scverse nb ls --help` -->
-<details><summary><code>scverse nb ls --help</code></summary>
+<!-- `bmdfff -- scverse nb cp --help` -->
+<details><summary><code>scverse nb cp --help</code></summary>
 
 ```
-Usage: scverse nb ls [OPTIONS]
+Usage: scverse nb cp [OPTIONS] [EMAILS]...
 
-  List TileDB-Cloud notebooks.
+  Create copies of a "template" notebook, with names corresponding to provided
+  email addresses.
 
 Options:
-  -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token.
-                               $TILEDB_REST_TOKEN takes precedence, if set.
-  -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
-                               scverse-ml-workshop-2024
-  --help                       Show this message and exit.
+  -t, --cloud-token-path TEXT   Path to file containing TileDB-Cloud auth
+                                token; default: .tiledb-cloud-token.
+                                $TILEDB_REST_TOKEN takes precedence, if set.
+  -N, --namespace TEXT          TileDB-Cloud namespace to work in; default:
+                                scverse-ml-workshop-2024
+  -n, --dry-run                 Print commands that would be run, but don't
+                                run them
+  -s, --src-notebook-name TEXT  "Read-only" notebook name, to be copied and
+                                renamed for each user.
+  --help                        Show this message and exit.
 ```
 </details>
 
