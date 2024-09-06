@@ -24,6 +24,7 @@ scverse
 #   invite  Create/List invitations to a TileDB-Cloud namespace.
 #   nb      Notebook-CRUD TileDB-Cloud commands for the...
 #   org     Manage a TileDB-Cloud organization / namespace.
+#   user    Manage a scverse TileDB-Cloud user.
 ```
 
 #### Auth
@@ -42,8 +43,6 @@ scverse org
 #
 # Commands:
 #   show (info)  Print a TileDB-Cloud organization.
-#   user         Show a TileDB-Cloud user.
-#   users        List users in a TileDB-Cloud organization.
 ```
 
 <!-- `bmdfff -- scverse org show --help` -->
@@ -56,46 +55,10 @@ Usage: scverse org show [OPTIONS]
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token.
+                               token; default: ".tiledb-cloud-token".
                                $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
-                               scverse-ml-workshop-2024
-  --help                       Show this message and exit.
-```
-</details>
-
-<!-- `bmdfff -- scverse org users --help` -->
-<details><summary><code>scverse org users --help</code></summary>
-
-```
-Usage: scverse org users [OPTIONS]
-
-  List users in a TileDB-Cloud organization.
-
-Options:
-  -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token.
-                               $TILEDB_REST_TOKEN takes precedence, if set.
-  -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
-                               scverse-ml-workshop-2024
-  -C, --compact                Print compact JSON
-  --help                       Show this message and exit.
-```
-</details>
-
-<!-- `bmdfff -- scverse org user --help` -->
-<details><summary><code>scverse org user --help</code></summary>
-
-```
-Usage: scverse org user [OPTIONS] [USERNAME]
-
-  Show a TileDB-Cloud user.
-
-Options:
-  -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token.
-                               $TILEDB_REST_TOKEN takes precedence, if set.
-  -C, --compact                Print compact JSON
+                               "scverse-ml-workshop-2024"
   --help                       Show this message and exit.
 ```
 </details>
@@ -112,7 +75,7 @@ scverse invite
 #   --help  Show this message and exit.
 #
 # Commands:
-#   do (send)  Invite a user to a TileDB-Cloud namespace
+#   do (send)  Invite a user to a TileDB-Cloud namespace.
 #   ls (list)  List a TileDB-Cloud namespace's outstanding invitations
 #   rm         Revoke one or more outstanding invitations to a TileDB-Cloud
 #              namespace
@@ -124,18 +87,18 @@ scverse invite
 ```
 Usage: scverse invite send [OPTIONS] [EMAILS]...
 
-  Invite a user to a TileDB-Cloud namespace
+  Invite a user to a TileDB-Cloud namespace.
 
 Options:
   -t, --cloud-token-path TEXT     Path to file containing TileDB-Cloud auth
-                                  token; default: .tiledb-cloud-token.
+                                  token; default: ".tiledb-cloud-token".
                                   $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT            TileDB-Cloud namespace to work in; default:
-                                  scverse-ml-workshop-2024
-  -r, --role [owner|admin|read_write|read_only]
+                                  "scverse-ml-workshop-2024"
+  -R, --role [owner|admin|read_write|read_only]
                                   Role to invite new user as (options:
                                   ['owner', 'admin', 'read_write',
-                                  'read_only']; default: read_write)
+                                  'read_only']; default: "read_write")
   --help                          Show this message and exit.
 ```
 </details>
@@ -150,10 +113,10 @@ Usage: scverse invite list [OPTIONS]
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token.
+                               token; default: ".tiledb-cloud-token".
                                $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
-                               scverse-ml-workshop-2024
+                               "scverse-ml-workshop-2024"
   -C, --compact                Print compact JSON
   --help                       Show this message and exit.
 ```
@@ -169,10 +132,10 @@ Usage: scverse invite rm [OPTIONS] [EMAILS]...
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token.
+                               token; default: ".tiledb-cloud-token".
                                $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
-                               scverse-ml-workshop-2024
+                               "scverse-ml-workshop-2024"
   -n, --dry-run                Print commands that would be run, but don't run
                                them
   -S, --no-strict              Raise and exit if any email is not found,
@@ -194,14 +157,16 @@ scverse nb
 #   --help  Show this message and exit.
 #
 # Commands:
-#   cp (copy)       Create one or more copies of a "template" notebook, with
-#                   names...
-#   get (download)  Download a TileDB-Cloud notebook; [DST] of "-" prints to
-#                   stdout.
-#   ls (list)       List TileDB-Cloud notebooks.
-#   md (metadata)   Show a TileDB-Cloud notebook's metadata.
-#   put (upload)    Upload a notebook to TileDB-Cloud.
-#   rm (delete)     Delete a notebook from TileDB-Cloud, by namespace and name.
+#   cp (copy)          Create one or more copies of a "template" notebook, with
+#                      names...
+#   get (download)     Download a TileDB-Cloud notebook; [DST] of "-" prints to
+#                      stdout.
+#   ls (list)          List TileDB-Cloud notebooks.
+#   md (metadata)      Show a TileDB-Cloud notebook's metadata.
+#   put (upload)       Upload a notebook to TileDB-Cloud.
+#   rm (delete)        Delete a notebook from TileDB-Cloud, by namespace and
+#                      name.
+#   sd (set-defaults)  Set default image, region, and size for a notebook.
 ```
 
 <!-- `bmdfff -- scverse nb ls --help` -->
@@ -214,10 +179,10 @@ Usage: scverse nb ls [OPTIONS]
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token.
+                               token; default: ".tiledb-cloud-token".
                                $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
-                               scverse-ml-workshop-2024
+                               "scverse-ml-workshop-2024"
   --help                       Show this message and exit.
 ```
 </details>
@@ -233,14 +198,16 @@ Usage: scverse nb cp [OPTIONS] [EMAILS]...
 
 Options:
   -t, --cloud-token-path TEXT   Path to file containing TileDB-Cloud auth
-                                token; default: .tiledb-cloud-token.
+                                token; default: ".tiledb-cloud-token".
                                 $TILEDB_REST_TOKEN takes precedence, if set.
+  -c, --credential-name TEXT    Storage credential name; default: "scverse-ml-
+                                workshop-2024"
   -N, --namespace TEXT          TileDB-Cloud namespace to work in; default:
-                                scverse-ml-workshop-2024
+                                "scverse-ml-workshop-2024"
   -n, --dry-run                 Print commands that would be run, but don't
                                 run them
   -s, --src-notebook-name TEXT  "Read-only" notebook name, to be copied and
-                                renamed for each user.
+                                renamed for each user (default: "template").
   --help                        Show this message and exit.
 ```
 </details>
@@ -255,10 +222,10 @@ Usage: scverse nb get [OPTIONS] NB_NAME [DST]
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token.
+                               token; default: ".tiledb-cloud-token".
                                $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
-                               scverse-ml-workshop-2024
+                               "scverse-ml-workshop-2024"
   --help                       Show this message and exit.
 ```
 </details>
@@ -273,11 +240,32 @@ Usage: scverse nb md [OPTIONS] NB_NAME
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token.
+                               token; default: ".tiledb-cloud-token".
                                $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
-                               scverse-ml-workshop-2024
+                               "scverse-ml-workshop-2024"
   -C, --compact                Print compact JSON
+  --help                       Show this message and exit.
+```
+</details>
+
+<!-- `bmdfff -- scverse nb sd` -->
+<details><summary><code>scverse nb sd</code></summary>
+
+```
+Usage: scverse nb sd [OPTIONS] NB_NAME
+
+  Set default image, region, and size for a notebook.
+
+Options:
+  -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
+                               token; default: ".tiledb-cloud-token".
+                               $TILEDB_REST_TOKEN takes precedence, if set.
+  -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
+                               "scverse-ml-workshop-2024"
+  -i, --image TEXT             Default image
+  -r, --region TEXT            Default region
+  -z, --size TEXT              Default server size
   --help                       Show this message and exit.
 ```
 </details>
@@ -292,14 +280,14 @@ Usage: scverse nb put [OPTIONS] SRC [DST_NAME]
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token.
+                               token; default: ".tiledb-cloud-token".
                                $TILEDB_REST_TOKEN takes precedence, if set.
-  -c, --credential-name TEXT   Storage credential name; default: scverse-ml-
-                               workshop-2024
+  -c, --credential-name TEXT   Storage credential name; default: "scverse-ml-
+                               workshop-2024"
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
-                               scverse-ml-workshop-2024
-  -S, --storage-path TEXT      Storage path; default: s3://tiledb-conferences-
-                               us-west-2/scverse-ml-workshop-2024
+                               "scverse-ml-workshop-2024"
+  -S, --storage-path TEXT      Storage path; default: "s3://tiledb-
+                               conferences-us-west-2/scverse-ml-workshop-2024"
   -d, --delete                 If True, delete the notebook after uploading
                                (e.g. for testing uploading/deleting)
   --help                       Show this message and exit.
@@ -316,15 +304,92 @@ Usage: scverse nb rm [OPTIONS] [NB_NAMES]...
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
-                               token; default: .tiledb-cloud-token.
+                               token; default: ".tiledb-cloud-token".
                                $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
-                               scverse-ml-workshop-2024
+                               "scverse-ml-workshop-2024"
   -n, --dry-run                Print commands that would be run, but don't run
                                them
   --help                       Show this message and exit.
 ```
 </details>
+
+### `scverse user`: Add/Show/List organization users
+<!-- `bmdf scverse user` -->
+```bash
+scverse user
+# Usage: scverse user [OPTIONS] COMMAND [ARGS]...
+#
+#   Manage a scverse TileDB-Cloud user.
+#
+# Options:
+#   --help  Show this message and exit.
+#
+# Commands:
+#   add   Add and initialize (notebook copy + defaults) one or more users...
+#   ls    List users in a TileDB-Cloud organization.
+#   show  Show a TileDB-Cloud user.
+```
+
+<!-- `bmdf -- scverse user show --help` -->
+```bash
+scverse user show --help
+# Usage: scverse user show [OPTIONS] [USERNAME]
+#
+#   Show a TileDB-Cloud user.
+#
+# Options:
+#   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
+#                                token; default: ".tiledb-cloud-token".
+#                                $TILEDB_REST_TOKEN takes precedence, if set.
+#   -C, --compact                Print compact JSON
+#   --help                       Show this message and exit.
+```
+
+<!-- `bmdf -- scverse user ls --help` -->
+```bash
+scverse user ls --help
+# Usage: scverse user ls [OPTIONS]
+#
+#   List users in a TileDB-Cloud organization.
+#
+# Options:
+#   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
+#                                token; default: ".tiledb-cloud-token".
+#                                $TILEDB_REST_TOKEN takes precedence, if set.
+#   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
+#                                "scverse-ml-workshop-2024"
+#   -C, --compact                Print compact JSON
+#   --help                       Show this message and exit.
+```
+
+<!-- `bmdf scverse user add` -->
+```bash
+scverse user add
+# Usage: scverse user add [OPTIONS] [EMAILS]...
+#
+#   Add and initialize (notebook copy + defaults) one or more users to a TileDB-
+#   Cloud namespace.
+#
+# Options:
+#   -t, --cloud-token-path TEXT     Path to file containing TileDB-Cloud auth
+#                                   token; default: ".tiledb-cloud-token".
+#                                   $TILEDB_REST_TOKEN takes precedence, if set.
+#   -c, --credential-name TEXT      Storage credential name; default: "scverse-
+#                                   ml-workshop-2024"
+#   -N, --namespace TEXT            TileDB-Cloud namespace to work in; default:
+#                                   "scverse-ml-workshop-2024"
+#   -R, --role [owner|admin|read_write|read_only]
+#                                   Role to invite new user as (options:
+#                                   ['owner', 'admin', 'read_write',
+#                                   'read_only']; default: "read_write")
+#   -s, --src-notebook-name TEXT    "Read-only" notebook name, to be copied and
+#                                   renamed for each user (default: "template").
+#   -i, --image TEXT                Default image
+#   -r, --region TEXT               Default region
+#   -z, --size TEXT                 Default server size
+#   --help                          Show this message and exit.
+```
 
 ## Example notebooks/tutorials
 See [examples/](examples/):

@@ -26,26 +26,3 @@ cmd = partial(command, org)
 def show(namespace):
     """Print a TileDB-Cloud organization."""
     print(cloud.organization(namespace))
-
-
-@cmd(no_args_is_help=False)
-@json_output
-def users(namespace):
-    """List users in a TileDB-Cloud organization."""
-    org = cloud.organization(namespace)
-    return [
-        user.to_dict()
-        for user in org.users
-    ]
-
-
-@cmd(no_args_is_help=False)
-@json_output
-@argument('username', required=False)
-def user(username):
-    """Show a TileDB-Cloud user."""
-    if username:
-        user = client.build(UserApi).get_user_with_username(username)
-    else:
-        user = user_profile()
-    return user.to_dict()

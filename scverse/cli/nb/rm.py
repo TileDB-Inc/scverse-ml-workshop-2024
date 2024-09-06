@@ -18,8 +18,9 @@ def rm(namespace, dry_run, nb_names):
     for arr in arrs1:
         if arr.name in nb_names:
             if dry_run:
-                err(f"Would delete {arr.name}")
+                err(f"Would delete {arr.tiledb_uri}")
             else:
+                err("Deleting", arr.tiledb_uri)
                 cloud.array.delete_array(arr.tiledb_uri)
 
     if not dry_run:
