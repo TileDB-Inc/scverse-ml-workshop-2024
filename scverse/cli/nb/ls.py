@@ -2,7 +2,7 @@ from . import cmd
 from ..base import get_arrays
 
 
-@cmd('ls', name='list', no_args_is_help=False)
+@cmd('list', no_args_is_help=False)
 def ls(namespace):
     """List TileDB-Cloud notebooks."""
     arrs = get_arrays(namespace)

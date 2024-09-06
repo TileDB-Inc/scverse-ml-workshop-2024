@@ -194,29 +194,29 @@ scverse nb
 #   --help  Show this message and exit.
 #
 # Commands:
-#   delete (rm)   Delete a notebook from TileDB-Cloud, by namespace and name.
-#   list (ls)     List TileDB-Cloud notebooks.
-#   upload (put)  Upload a notebook to TileDB-Cloud.
+#   cp (copy)       Create copies of a "template" notebook, with names
+#                   corresponding...
+#   get (download)  Download a TileDB-Cloud notebook; [DST] of "-" prints to
+#                   stdout.
+#   ls (list)       List TileDB-Cloud notebooks.
+#   put (upload)    Upload a notebook to TileDB-Cloud.
+#   rm (delete)     Delete a notebook from TileDB-Cloud, by namespace and name.
 ```
 
-<!-- `bmdfff scverse nb put` -->
-<details><summary><code>scverse nb put</code></summary>
+<!-- `bmdfff -- scverse nb ls --help` -->
+<details><summary><code>scverse nb ls --help</code></summary>
 
 ```
-Usage: scverse nb put [OPTIONS] SRC
+Usage: scverse nb ls [OPTIONS]
 
-  Upload a notebook to TileDB-Cloud.
+  List TileDB-Cloud notebooks.
 
 Options:
   -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
                                token; default: .tiledb-cloud-token.
                                $TILEDB_REST_TOKEN takes precedence, if set.
-  -c, --credential-name TEXT   Storage credential name; default: scverse-ml-
-                               workshop-2024
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
                                scverse-ml-workshop-2024
-  -d, --delete                 If True, delete the notebook after uploading
-  -n, --dst-name TEXT          Destination notebook name
   --help                       Show this message and exit.
 ```
 </details>
@@ -239,11 +239,53 @@ Options:
 ```
 </details>
 
+<!-- `bmdfff -- scverse nb get --help` -->
+<details><summary><code>scverse nb get --help</code></summary>
+
+```
+Usage: scverse nb get [OPTIONS] NB_NAME [DST]
+
+  Download a TileDB-Cloud notebook; [DST] of "-" prints to stdout.
+
+Options:
+  -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
+                               token; default: .tiledb-cloud-token.
+                               $TILEDB_REST_TOKEN takes precedence, if set.
+  -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
+                               scverse-ml-workshop-2024
+  --help                       Show this message and exit.
+```
+</details>
+
+<!-- `bmdfff scverse nb put` -->
+<details><summary><code>scverse nb put</code></summary>
+
+```
+Usage: scverse nb put [OPTIONS] SRC [DST_NAME]
+
+  Upload a notebook to TileDB-Cloud.
+
+Options:
+  -t, --cloud-token-path TEXT  Path to file containing TileDB-Cloud auth
+                               token; default: .tiledb-cloud-token.
+                               $TILEDB_REST_TOKEN takes precedence, if set.
+  -c, --credential-name TEXT   Storage credential name; default: scverse-ml-
+                               workshop-2024
+  -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
+                               scverse-ml-workshop-2024
+  -S, --storage-path TEXT      Storage path; default: s3://tiledb-conferences-
+                               us-west-2/scverse-ml-workshop-2024
+  -d, --delete                 If True, delete the notebook after uploading
+                               (e.g. for testing uploading/deleting)
+  --help                       Show this message and exit.
+```
+</details>
+
 <!-- `bmdfff scverse nb rm` -->
 <details><summary><code>scverse nb rm</code></summary>
 
 ```
-Usage: scverse nb rm [OPTIONS] NB_NAME
+Usage: scverse nb rm [OPTIONS] [NB_NAMES]...
 
   Delete a notebook from TileDB-Cloud, by namespace and name.
 
@@ -253,6 +295,8 @@ Options:
                                $TILEDB_REST_TOKEN takes precedence, if set.
   -N, --namespace TEXT         TileDB-Cloud namespace to work in; default:
                                scverse-ml-workshop-2024
+  -n, --dry-run                Print commands that would be run, but don't run
+                               them
   --help                       Show this message and exit.
 ```
 </details>

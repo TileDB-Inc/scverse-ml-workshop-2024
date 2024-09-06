@@ -7,7 +7,8 @@ from tiledb import cloud
 from utz import decos
 
 from .aliased_group import AliasedGroup
-from .base import cloud_token_opt, credential_opt, namespace_opt, DEFAULT_CLOUD_TOKEN_PATH, TILEDB_REST_TOKEN_VAR
+from .base import cloud_token_opt, credential_opt, namespace_opt, DEFAULT_CLOUD_TOKEN_PATH, TILEDB_REST_TOKEN_VAR, \
+    storage_path_opt
 
 
 def _get_token(
@@ -54,6 +55,7 @@ def command(
         @decos([
             *([credential_opt] if 'credential_name' in spec.args else []),
             *([namespace_opt] if 'namespace' in spec.args else []),
+            *([storage_path_opt] if 'storage_path' in spec.args else []),
         ])
         @wraps(fn)
         def _fn(cloud_token_path, **kwargs):
