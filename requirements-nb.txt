@@ -1,3 +1,4 @@
 cellxgene_census
+tiledbsoma
 torch
 torchdata
