@@ -2,6 +2,8 @@
 
 Scripts/Notebooks associated with the [Training models on atlas-scale single-cell datasets] workshop at [scverse Conference 2024].
 
+[workshop.ipynb] is synced to the TileDB-Cloud, and a copy created for each workshop participant.
+
 ## `scverse`: TileDB-Cloud CLI
 
 ### Install
@@ -207,7 +209,8 @@ Options:
   -n, --dry-run                 Print commands that would be run, but don't
                                 run them
   -s, --src-notebook-name TEXT  "Read-only" notebook name, to be copied and
-                                renamed for each user (default: "template").
+                                renamed for each user (default:
+                                "instructor_scverse-ml-workshop-2024").
   --help                        Show this message and exit.
 ```
 </details>
@@ -384,7 +387,8 @@ scverse user add
 #                                   ['owner', 'admin', 'read_write',
 #                                   'read_only']; default: "read_write")
 #   -s, --src-notebook-name TEXT    "Read-only" notebook name, to be copied and
-#                                   renamed for each user (default: "template").
+#                                   renamed for each user (default:
+#                                   "instructor_scverse-ml-workshop-2024").
 #   -i, --image TEXT                Default image
 #   -r, --region TEXT               Default region
 #   -z, --size TEXT                 Default server size
@@ -399,8 +403,8 @@ See [examples/](examples/):
 
 
 [Training models on atlas-scale single-cell datasets]: https://cfp.scverse.org/2024/talk/GQHNYE/
-[schedule]: https://scverse.org/conference2024/schedule#2024-09-12
 [scverse Conference 2024]: https://scverse.org/conference2024
+[workshop.ipynb]: workshop.ipynb
 [pytorch.ipynb]: examples/pytorch.ipynb
 [pytorch.html]: https://chanzuckerberg.github.io/cellxgene-census/notebooks/experimental/pytorch.html
 [cshl.ipynb]: examples/cshl.ipynb

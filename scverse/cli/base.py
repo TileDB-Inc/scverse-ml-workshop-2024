@@ -17,7 +17,7 @@ DEFAULT_STORAGE_PATH = 's3://tiledb-conferences-us-west-2/scverse-ml-workshop-20
 DEFAULT_CREDENTIAL_NAME = 'scverse-ml-workshop-2024'
 DEFAULT_CLOUD_TOKEN_PATH = '.tiledb-cloud-token'
 TILEDB_REST_TOKEN_VAR = 'TILEDB_REST_TOKEN'
-TEMPLATE_NAME = 'template'  # "Read-only" notebook, to be copied and renamed for each user.
+TEMPLATE_NAME = 'instructor_scverse-ml-workshop-2024'  # "Read-only" notebook, to be copied and renamed for each user.
 DEFAULT_SERVER_SIZE = 'large'  # TODO
 
 READ_WRITE = OrganizationRoles.READ_WRITE
