@@ -1,0 +1,6 @@
+cellxgene_census
+scanpy
+scikit-misc
+tiledbsoma
+torch
+torchdata
