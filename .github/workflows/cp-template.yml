@@ -3,6 +3,8 @@ on:
   push:
     branches:
     - main
+    paths:
+    - 'workshop.ipynb'
   workflow_dispatch:
     inputs:
       dst_name:
