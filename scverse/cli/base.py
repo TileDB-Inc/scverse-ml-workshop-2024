@@ -36,6 +36,5 @@ src_nb_opt = option('-s', '--src-notebook-name', default=TEMPLATE_NAME, help=f'"
 size_opt = option('-z', '--size', default=DEFAULT_SERVER_SIZE, help='Default server size')
 
 
-def get_arrays(namespace: str):
-    return client.list_arrays(namespace=namespace).arrays
-
+def get_arrays(namespace: str, per_page: int = 100):
+    return client.list_arrays(namespace=namespace, per_page=per_page).arrays
