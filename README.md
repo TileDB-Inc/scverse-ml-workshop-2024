@@ -1,10 +1,17 @@
-# scverse-ml-workshop-2024
+# Training models on atlas-scale single-cell datasets
 
-Scripts/Notebooks associated with the [Training models on atlas-scale single-cell datasets] workshop at [scverse Conference 2024].
+Workshop at [scverse Conference 2024]:
 
-[workshop.ipynb] is synced to the TileDB-Cloud, and a copy created for each workshop participant.
+- **Conference page:** [Training models on atlas-scale single-cell datasets]
+- **Slides:** [Google Slides][slides], [PDF]
+- **Notebook:** [workshop.ipynb] is synced to the TileDB-Cloud namespace, and a copy created for each workshop participant (by [GitHub Action]).
+
+[![](img/title-slide.png)][slides]
+
+---
 
 ## `scverse`: TileDB-Cloud CLI
+We used this command-line tool to manage signups to the TileDB-Cloud namespace where live notebooks were hosted during the workshop.
 
 ### Install
 ```bash
@@ -404,6 +411,8 @@ See [examples/](examples/):
 
 [Training models on atlas-scale single-cell datasets]: https://cfp.scverse.org/2024/talk/GQHNYE/
 [scverse Conference 2024]: https://scverse.org/conference2024
+[slides]: https://docs.google.com/presentation/d/1VnAKyOUUdzTZkgcYjoavtDU5_drFu5flC5oG6I7RnP0/edit
+[PDF]: census-tiledb-atlas-scale-models_r1.pdf
 [workshop.ipynb]: workshop.ipynb
 [pytorch.ipynb]: examples/pytorch.ipynb
 [pytorch.html]: https://chanzuckerberg.github.io/cellxgene-census/notebooks/experimental/pytorch.html
@@ -412,3 +421,4 @@ See [examples/](examples/):
 [Papermill]: https://papermill.readthedocs.io/en/latest/
 [cshl-2023]: https://colab.research.google.com/drive/1QgZQRF_ZM9q5oKbynnD9ToklVFdui7pq
 [cshl-2023 R]: https://colab.research.google.com/drive/158f6Ggl5MRxtnxC9Q01TjJMbkIPQxcim
+[GitHub Action]: .github/workflows/cp-template.yml
