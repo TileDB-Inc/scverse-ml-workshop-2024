@@ -11,7 +11,10 @@ Workshop at [scverse Conference 2024]:
 ---
 
 ## `scverse`: TileDB-Cloud CLI
-We used this command-line tool to manage signups to the TileDB-Cloud namespace where live notebooks were hosted during the workshop.
+We used this command-line tool to manage signups to the TileDB-Cloud namespace where live notebooks were hosted during the workshop, especially `scverse user add [emails...]` which:
+- Invites a user to the TileDB-Cloud namespace used in the workshop (`scverse invite send [emails...]`)
+- Creates a copy of [workshop.ipynb] in the namespace, renamed after the user's email address (`scverse nb cp [emails...]`)
+- Sets relevant defaults on their copy of the notebook ("Genomics" image, "Large" size, "us-west-2" region; `scverse nb set-defaults [notebook names...]`)
 
 ### Install
 ```bash
