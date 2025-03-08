@@ -3,10 +3,10 @@
 Workshop at [scverse Conference 2024]:
 
 - **Conference page:** [Training models on atlas-scale single-cell datasets]
-- **Slides:** [Google Slides][slides], [PDF]
+- **Slides:** [census-tiledb-atlas-scale-models_r1.pdf][PDF]
 - **Notebook:** [workshop.ipynb] is synced to the TileDB-Cloud namespace, and a copy created for each workshop participant (by [GitHub Action]).
 
-[![](img/title-slide.png)][slides]
+[![](img/title-slide.png)][PDF]
 
 ---
 
@@ -414,7 +414,6 @@ See [examples/](examples/):
 
 [Training models on atlas-scale single-cell datasets]: https://cfp.scverse.org/2024/talk/GQHNYE/
 [scverse Conference 2024]: https://scverse.org/conference2024
-[slides]: https://docs.google.com/presentation/d/1VnAKyOUUdzTZkgcYjoavtDU5_drFu5flC5oG6I7RnP0/edit
 [PDF]: census-tiledb-atlas-scale-models_r1.pdf
 [workshop.ipynb]: workshop.ipynb
 [pytorch.ipynb]: examples/pytorch.ipynb
